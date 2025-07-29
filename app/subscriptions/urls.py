@@ -1,5 +1,8 @@
 from django.urls import path
+from . import views
+
+app_name = 'subscriptions'
 
 urlpatterns = [
-    # Add subscription-related URLs here when views are implemented
+    path('', views.index, name='index'),
 ]

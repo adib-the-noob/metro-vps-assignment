@@ -29,7 +29,9 @@ urlpatterns = [
 
     # apps
     path('api/auth/', include('authcore.urls')),
-    path('api/subscriptions/', include('subscriptions.urls')),
+    # path('', include('subscriptions.urls')),
+
+    path('', include('subscriptions.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
