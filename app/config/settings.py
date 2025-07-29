@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     # apps
     'authcore',
     'subscriptions',
+
+    # third-party apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
