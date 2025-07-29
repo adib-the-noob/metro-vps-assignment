@@ -27,7 +27,7 @@ class Subscription(models.Model):
 
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField()
-    status = models.CharField(max_length=10, choices=SUBSCRIPTION_STATUS, default="active")
+    status = models.CharField(max_length=15, choices=SUBSCRIPTION_STATUS, default="active")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
