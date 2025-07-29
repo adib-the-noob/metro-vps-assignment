@@ -54,7 +54,6 @@ class ExchangeRateLog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ("base_currency", "target_currency", "date")
         ordering = ["-date"]
 
     def __str__(self):
