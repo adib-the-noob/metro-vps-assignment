@@ -1,5 +1,15 @@
 from django.urls import path
+from . import views
+from .api_views import (
+    UserSubscribeApiView,
+    CancelSubscriptionApiView
+)
 
 urlpatterns = [
-    # Add subscription-related URLs here when views are implemented
+    path('', views.subscriptions_list, name='subscriptions_list'),
+    
+    # apis
+    path('api/subscriptions/', UserSubscribeApiView.as_view(), name='get_all_plans'),
+    path('api/subscribe/', UserSubscribeApiView.as_view(), name='subscribe'),
+    path('api/cancel-subscription/', CancelSubscriptionApiView.as_view(), name='cancel_subscription'),
 ]
