@@ -18,9 +18,9 @@
         <div class="row justify-content-center">
             <div class="col-12 col-xl-10">
                 <!-- Dashboard Header -->
-                <header class="text-center mb-5 py-4">
-                    <h1 class="display-2 fw-bold text-dark mb-3">Subscriptions Dashboard</h1>
-                    <p class="lead text-muted fs-4 fw-light">Manage and monitor your subscription ecosystem</p>
+                <header class="text-center mb-5 py-2">
+                    <h1 class="display-2 fw-bold text-dark mb-2">Subscriptions Dashboard</h1>
+                    <p class="lead text-muted fs-4 fw-light">Monitor your subscription ecosystem</p>
                 </header>
 
                 <!-- Stats Overview -->
@@ -86,7 +86,7 @@
                                                     {% if subscription.status == "active" %}
                                                         <span class="badge bg-success px-3 py-2 rounded-pill text-uppercase fw-semibold">Active</span>
                                                     {% elif subscription.status == "cancelled" %}
-                                                        <span class="badge bg-info px-3 py-2 rounded-pill text-uppercase fw-semibold">Cancelled</span>
+                                                        <span class="badge bg-warning px-3 py-2 rounded-pill text-uppercase fw-semibold">Cancelled</span>
                                                     {% elif subscription.status == "expired" %}
                                                         <span class="badge bg-danger px-3 py-2 rounded-pill text-uppercase fw-semibold">Expired</span>
                                                     {% else %}
