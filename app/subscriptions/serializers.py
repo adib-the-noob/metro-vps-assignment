@@ -1,4 +1,3 @@
-from time import timezone
 from rest_framework import serializers
 from .models import Plan, Subscription
 from django.utils import timezone

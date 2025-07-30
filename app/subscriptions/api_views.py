@@ -55,7 +55,7 @@ class UserSubscribeApiView(APIView):
             return APIResponse(
                 data=UserSubscriptionSerializer(new_subscription).data,
                 status=status.HTTP_200_OK,
-                message="Subscription updated successfully."
+                message="Subscription created successfully."
             )
         return APIResponse(
             data=serializer.errors,

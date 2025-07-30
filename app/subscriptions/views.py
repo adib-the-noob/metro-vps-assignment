@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import (
     Plan,
     Subscription,
-    User
 )
+from django.contrib.auth.models import User
 
 def subscriptions_list(request):
     subscriptions = Subscription.objects.select_related('user', 'plan').all()

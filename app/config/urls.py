@@ -29,7 +29,6 @@ urlpatterns = [
 
     # apps
     path('api/auth/', include('authcore.urls')),
-    # path('', include('subscriptions.urls')),
 
     path('', include('subscriptions.urls')),
 ]
