@@ -105,14 +105,13 @@ class CancelSubscriptionApiView(APIView):
                         message="Subscription not found or not active."
                     )
                 with transaction.atomic():
-                    subscription.end_date = timezone.now()  # Set end date to now
-                    subscription.updated_at = timezone.now()
+                    subscription.end_date = timezone.now()
                     subscription.status = 'cancelled'
                     subscription.save()
                 serializer = UserSubscriptionSerializer(subscription)
                 return APIResponse(
                     data=serializer.data,
-                    status=status.HTTP_204_NO_CONTENT,
+                    status=status.HTTP_200_OK,
                     message="Subscription cancelled successfully."
                 )
             return APIResponse(
