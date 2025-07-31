@@ -10,7 +10,8 @@ from .models import Plan, Subscription
 from config.responses import APIResponse
 from .serializers import (
     UserSubscriptionSerializer, 
-    SubscriptionPlanIdSerializer
+    SubscriptionPlanIdSerializer,
+    CancelSubscriptionSerializer
 )
 
 class UserSubscribeApiView(APIView):
@@ -90,30 +91,32 @@ class CancelSubscriptionApiView(APIView):
 
     def post(self, request):
         try:
-            serializer = SubscriptionPlanIdSerializer(data=request.data, context={'request': request})
+            serializer = CancelSubscriptionSerializer(data=request.data, context={'request': request})
             if serializer.is_valid():
                 subscription = Subscription.objects.filter(
-                    user=request.user, 
-                    plan_id=serializer.validated_data['plan_id'],
-                    status='active',
-                    end_date__gt=timezone.now()  # Ensure the subscription is still active
+                    user=request.user,
+                    id=serializer.validated_data['subscription_id'],
+                    status='active'
                 ).first()
                 if not subscription:
                     return APIResponse(
                         data=None,
                         status=status.HTTP_404_NOT_FOUND,
-                        message="Subscription not found."
+                        message="Subscription not found or not active."
                     )
-                subscription.status = 'cancelled'
-                subscription.save()
-        
+                with transaction.atomic():
+                    subscription.end_date = timezone.now()  # Set end date to now
+                    subscription.updated_at = timezone.now()
+                    subscription.status = 'cancelled'
+                    subscription.save()
+                serializer = UserSubscriptionSerializer(subscription)
                 return APIResponse(
-                    data=None,
+                    data=serializer.data,
                     status=status.HTTP_204_NO_CONTENT,
                     message="Subscription cancelled successfully."
                 )
             return APIResponse(
-                data=serializer.errors,
+                errors=serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST,
                 message="Invalid data provided."
             )

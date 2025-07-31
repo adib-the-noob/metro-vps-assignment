@@ -75,6 +75,7 @@
                                     <table class="table table-hover mb-0">
                                         <thead class="table-secondary">
                                             <tr class="text-center">
+                                                <th class="py-3 fw-semibold text-uppercase small" scope="col">Subscription ID</th>
                                                 <th class="py-3 fw-semibold text-uppercase small" scope="col">User</th>
                                                 <th class="py-3 fw-semibold text-uppercase small" scope="col">Plan</th>
                                                 <th class="py-3 fw-semibold text-uppercase small" scope="col">Start Date</th>
@@ -85,7 +86,8 @@
                                         <tbody>
                                             {% for subscription in subscriptions %}
                                             <tr class="text-center">
-                                                <td class="py-3 fw-bold">{{ subscription.user.username }}</td>
+                                                <td class="py-3 fw-bold">{{ subscription.id }}</td>
+                                                <td class="py-3">{{ subscription.user.username }}</td>
                                                 <td class="py-3">{{ subscription.plan.name }}</td>
                                                 <td class="py-3">{{ subscription.start_date }}</td>
                                                 <td class="py-3">{{ subscription.end_date }}</td>
