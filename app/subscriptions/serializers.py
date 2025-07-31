@@ -39,5 +39,6 @@ class SubscriptionPlanIdSerializer(serializers.Serializer):
         plan_id = data.get('plan_id')
         if not Plan.objects.filter(id=plan_id).exists():
             raise serializers.ValidationError("Plan with this ID does not exist.")
+        data['plan_id'] = plan_id
         return data
     

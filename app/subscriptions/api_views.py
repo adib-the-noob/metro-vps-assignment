@@ -39,21 +39,23 @@ class UserSubscribeApiView(APIView):
                 user=request.user, 
                 plan_id=serializer.validated_data['plan_id']
             ).first()
-            if past_subscription and past_subscription.end_date > timezone.now():
+            if past_subscription and past_subscription.end_date > timezone.now(): # end date is in the future; subscription still active
+                serializer = UserSubscriptionSerializer(past_subscription)
                 return APIResponse(
-                    data=UserSubscriptionSerializer(past_subscription).data,
+                    data=serializer.data,
                     status=status.HTTP_400_BAD_REQUEST,
                     message="You are already subscribed to this plan and it is still active."
                 )
             plan = Plan.objects.get(id=serializer.validated_data['plan_id'])
             new_subscription = Subscription.objects.create(
                 user=request.user,
-                plan_id=serializer.validated_data['plan_id'],
+                plan_id=plan.id,
                 start_date=timezone.now(),
                 end_date=timezone.now() + timezone.timedelta(days=plan.duration_days)
             )
+            serializer = UserSubscriptionSerializer(new_subscription)
             return APIResponse(
-                data=UserSubscriptionSerializer(new_subscription).data,
+                data=serializer.data,
                 status=status.HTTP_200_OK,
                 message="Subscription created successfully."
             )
