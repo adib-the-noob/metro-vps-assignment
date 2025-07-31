@@ -43,13 +43,13 @@ class ExchangeRateLog(models.Model):
     base_currency = models.CharField(max_length=10)
     target_currency = models.CharField(max_length=10)
     rate = models.DecimalField(max_digits=10, decimal_places=6)
-    date = models.DateTimeField(default=timezone.now)
+    fetched_at = models.DateTimeField(default=timezone.now)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["-date"]
+        ordering = ["-fetched_at"]
 
     def __str__(self):
-        return f"Exchange rate from {self.base_currency} to {self.target_currency} on {self.date.strftime('%Y-%m-%d %H:%M:%S')}: {self.rate}"
+        return f"{self.base_currency} - {self.target_currency} on {self.fetched_at.strftime('%Y-%m-%d %H:%M:%S')}: {self.rate}"
