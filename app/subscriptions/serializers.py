@@ -42,3 +42,5 @@ class SubscriptionPlanIdSerializer(serializers.Serializer):
         data['plan_id'] = plan_id
         return data
     
+class CancelSubscriptionSerializer(serializers.Serializer):
+    subscription_id = serializers.IntegerField()

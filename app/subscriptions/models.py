@@ -34,14 +34,9 @@ class Subscription(models.Model):
 
     class Meta:
         ordering = ["-start_date"]
-        unique_together = ("user", "plan", "start_date")
 
     def __str__(self):
         return f"{self.user.username} - {self.plan.name} subscription"
-
-    @property
-    def is_active(self):
-        return self.status == "active" and timezone.now() < self.end_date
 
 
 class ExchangeRateLog(models.Model):
