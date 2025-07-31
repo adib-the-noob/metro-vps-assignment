@@ -36,7 +36,7 @@ class Subscription(models.Model):
         ordering = ["-start_date"]
 
     def __str__(self):
-        return f"{self.user.username} - {self.plan.name} subscription"
+        return f"{self.id} - {self.user.username} - {self.plan.name} - {self.status}"
 
 
 class ExchangeRateLog(models.Model):
