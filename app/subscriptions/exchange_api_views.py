@@ -34,5 +34,11 @@ def compare_exchange(request):
     )
     return APIResponse(
         status=status.HTTP_200_OK,
-        data=rate
+        message="Exchange rate retrieved successfully.",
+        data={
+            'base_currency': rate['base_code'],
+            'target_currency': rate['target_code'],
+            'rate': rate['conversion_rate'],
+            'timestamp': timezone.now().isoformat()
+        }
     )

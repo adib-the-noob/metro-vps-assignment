@@ -102,7 +102,7 @@ class CancelSubscriptionApiView(APIView):
                     return APIResponse(
                         data=None,
                         status=status.HTTP_404_NOT_FOUND,
-                        message="Subscription not found or not active."
+                        message="Subscription not found!"
                     )
                 with transaction.atomic():
                     subscription.end_date = timezone.now()
