@@ -1,8 +1,12 @@
+import logging
+
 from django.utils import timezone
 from .models import ExchangeRateLog
 from utils.caller import compare_exchange_rate
 from celery import shared_task
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @shared_task
 def fetch_exchange_rate():
@@ -14,5 +18,5 @@ def fetch_exchange_rate():
             fetched_at=timezone.now(),
             rate=response['conversion_rate']
         )
-        print(f"Exchange rate '{response['base_code']}/{response['target_code']}' fetched and logged successfully.")
+        logger.info(f"Exchange rate '{response['base_code']}/{response['target_code']}' fetched and logged successfully.")
     return None

@@ -1,5 +1,9 @@
 import os
 import requests
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -19,5 +23,5 @@ def compare_exchange_rate(base_currency=None, target_currency=None):
             return data
         return None
     except Exception as e:
-        print(f"Error fetching exchange rate: {e}")
+        logger.error(f"Error fetching exchange rate: {e}")
         return None
