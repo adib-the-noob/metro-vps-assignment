@@ -20,7 +20,7 @@ class UserSubscribeApiView(APIView):
 
     def get(self, request):
         try:
-            subscriptions = Subscription.objects.filter(user=request.user).select_related('plan')
+            subscriptions = Subscription.objects.filter(user=request.user, status="active").select_related('plan')
             serializer = UserSubscriptionSerializer(subscriptions, many=True)
             return APIResponse(
                 data=serializer.data,   
@@ -41,8 +41,7 @@ class UserSubscribeApiView(APIView):
                 past_subscription = Subscription.objects.filter(
                     user=request.user, 
                     plan_id=serializer.validated_data['plan_id'],
-                    status='active',
-                    end_date__gt=timezone.now() # Check if the subscription is still active
+                    status='active'
                 ).first()
                 if past_subscription:
                     serializer = UserSubscriptionSerializer(past_subscription)
