@@ -5,7 +5,6 @@ from .api_views import (
     CancelSubscriptionApiView
 )
 from .exchange_api_views import (
-    get_exchange_rates,
     compare_exchange
 )
 
@@ -18,6 +17,5 @@ urlpatterns = [
     path('api/cancel-subscription/', CancelSubscriptionApiView.as_view(), name='cancel_subscription'),
 
     # exchange rate APIs
-    path('api/exchange-rates/<str:base_currency>/<str:target_currency>/', get_exchange_rates, name='get_exchange_rates'),
-    path('api/compare-exchange', compare_exchange, name='compare_exchange'),
+    path('api/exchange-rate/', compare_exchange, name='compare_exchange'),
 ]
