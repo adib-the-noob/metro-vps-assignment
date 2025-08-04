@@ -383,7 +383,7 @@ Authorization: Bearer <auth_token>
 
 # ⏰ Scheduling Tasks
 
-### ▶️ Add Interval Task
+### Add Interval
 - In the admin panel, navigate to **Periodic Tasks**.
 - Create a new periodic task with the following details:
   - **Number of Periods**: `30` 
