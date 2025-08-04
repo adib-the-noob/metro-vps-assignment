@@ -378,3 +378,25 @@ Authorization: Bearer <auth_token>
     "status": "ok"
   }
   ```
+
+---
+
+# ⏰ Scheduling Tasks
+
+### ▶️ Add Interval Task
+- In the admin panel, navigate to **Periodic Tasks**.
+- Create a new periodic task with the following details:
+  - **Number of Periods**: `30` 
+  - **Interval Period:**: `seconds` or `minutes` (as per your requirement)
+
+### Add Task
+- In the admin panel, navigate to **Periodic Task**.
+- Create a new periodic task with the following details:
+  - **Name**: `Fetch USD to BDT Task`
+  - **Task**: `subscription.tasks.fetch_exchange_rate`
+  - **Interval Schedule**: Choose the interval you set earlier (e.g., every 30 seconds)
+  - **Enabled**: Checked
+
+## Check The Exchange Rate Log
+- In the admin panel, navigate to **Exchange Rate Logs**.
+- You should see logs of the exchange rates fetched by the periodic task.
