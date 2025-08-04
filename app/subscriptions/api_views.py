@@ -48,7 +48,8 @@ class UserSubscribeApiView(APIView):
                 past_subscription = Subscription.objects.select_for_update().filter(
                     user=request.user, 
                     plan_id=serializer.validated_data['plan_id'],
-                    status='active'
+                    status='active',
+                    end_date__gt=timezone.now()
                 ).first()
 
                 if past_subscription:
@@ -103,7 +104,7 @@ class CancelSubscriptionApiView(APIView):
                     return APIResponse(
                         data=None,
                         status=status.HTTP_404_NOT_FOUND,
-                        message="Subscription not found or already cancelled!"
+                        message="Subscription not found!"
                     )
                 
                 # Update subscription status
