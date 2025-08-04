@@ -53,9 +53,6 @@ $ sudo systemctl stop redis-server mysql
 
 # Add your .env file to the app/ directory
 ```
-
-**.env File:** [Download here](https://drive.google.com/file/d/11I6ZTbwzH2SsH1HwHlCWQPIkoJY_2VdN/view?usp=drive_link)
-
 ### ⚙️ Run Services
 
 ```bash
@@ -100,16 +97,7 @@ $ exit
 | `celery-beat` | Scheduler  | -    | Scheduled Tasks |
 
 ---
-
-## 📖 API Documentation
-
-Here’s a clean and professional **API documentation** generated from your Postman collection for the **MetroVPS Assignment**:
-
----
-
-# 📘 MetroVPS API Documentation
-
-> Base URL: `http://localhost:8000`
+# 📚 API Documentation
 
 ## 🔐 Authentication APIs
 
