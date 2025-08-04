@@ -380,6 +380,10 @@ Authorization: Bearer <auth_token>
   ```
 
 ---
+## Admin Panel Credentials
+- **Username**: `admin`
+- **Password**: `admin`
+---
 
 # ⏰ Scheduling Tasks
 
@@ -400,3 +404,6 @@ Authorization: Bearer <auth_token>
 ## Check The Exchange Rate Log
 - In the admin panel, navigate to **Exchange Rate Logs**.
 - You should see logs of the exchange rates fetched by the periodic task.
+
+---
+
