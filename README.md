@@ -381,6 +381,8 @@ Authorization: Bearer <auth_token>
 
 ---
 ## Admin Panel Credentials
+- **URL**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
+- **Production URL**: [https://mvps.adibthenoob.com/admin/](https://mvps.adibthenoob.com/admin/)
 - **Username**: `admin`
 - **Password**: `admin`
 ---
