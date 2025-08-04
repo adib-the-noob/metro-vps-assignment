@@ -97,7 +97,9 @@ $ exit
 
 ---
 # 📚 API Documentation
+## 📥 Postman Collection
 
+You can download the complete Postman collection for all API endpoints [here](./MetroVPS.postman_collection.json) to easily test and explore the MetroVPS Assignment APIs.
 ## 🔐 Authentication APIs
 
 ### ▶️ Register User
