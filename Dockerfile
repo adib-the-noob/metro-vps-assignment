@@ -25,4 +25,4 @@ COPY . /app/
 EXPOSE 8000
 
 # Default command (user will override as needed)
-CMD ["sh", "-c", "python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
