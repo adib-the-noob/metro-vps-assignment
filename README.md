@@ -35,7 +35,11 @@ A clean and production-grade Django REST API for managing subscriptions and real
 | Django, DRF, JWT | MySQL, Redis     | Celery     | Docker, Docker Compose |
 
 ---
+## 🌐 Live Demo
 
+You can access the live MetroVPS Assignment API here:
+
+[https://mvps.adibthenoob.com](https://mvps.adibthenoob.com)
 ## 🚀 Quick Start
 
 **Requirements:** Docker + Docker Compose
