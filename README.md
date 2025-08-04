@@ -25,7 +25,6 @@ A clean and production-grade Django REST API for managing subscriptions and real
 | **Async Tasks**         | Background jobs via Celery & Redis            |
 | **Rate Logs**           | Tracks and logs exchange history              |
 | **Dockerized**          | Fully containerized microservice setup        |
-| **Auto Docs**           | Rich API documentation with examples          |
 
 ---
 
@@ -107,40 +106,40 @@ $ exit
 
 #### Request Body:
 
-```json
-{
-  "first_name": "Hacker",
-  "last_name": "ADIB",
-  "username": "noob",
-  "email": "noob@noob.com",
-  "password": "hacker"
-}
-```
+  ```json
+  {
+    "first_name": "Hacker",
+    "last_name": "ADIB",
+    "username": "noob",
+    "email": "noob@noob.com",
+    "password": "hacker"
+  }
+  ```
 
 #### Responses:
 
-* ✅ **201 Created**
+  * ✅ **201 Created**
 
-```json
-{
-  "status": "success",
-  "message": "User registered successfully",
-  "data": { ... }
-}
-```
+    ```json
+    {
+      "status": "success",
+      "message": "User registered successfully",
+      "data": { ... }
+    }
+    ```
 
 * ❌ **400 Bad Request**
 
-```json
-{
-  "status": "error",
-  "message": "User registration failed",
-  "errors": {
-    "username": ["Username already exists."],
-    "email": ["Email already exists."]
+  ```json
+  {
+    "status": "error",
+    "message": "User registration failed",
+    "errors": {
+      "username": ["Username already exists."],
+      "email": ["Email already exists."]
+    }
   }
-}
-```
+  ```
 
 ---
 
@@ -161,28 +160,28 @@ $ exit
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "User logged in successfully",
-  "data": {
-    "type": "Bearer",
-    "access_token": "<JWT Token>"
+  ```json
+  {
+    "status": "success",
+    "message": "User logged in successfully",
+    "data": {
+      "type": "Bearer",
+      "access_token": "<JWT Token>"
+    }
   }
-}
-```
+  ```
 
 * ❌ **400 Bad Request**
 
-```json
-{
-  "status": "error",
-  "message": "User login failed",
-  "errors": {
-    "non_field_errors": ["Invalid username or password"]
+  ```json
+  {
+    "status": "error",
+    "message": "User login failed",
+    "errors": {
+      "non_field_errors": ["Invalid username or password"]
+    }
   }
-}
-```
+  ```
 
 ---
 
@@ -200,13 +199,13 @@ Authorization: Bearer <auth_token>
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "User profile retrieved successfully",
-  "data": { ... }
-}
-```
+  ```json
+  {
+    "status": "success",
+    "message": "User profile retrieved successfully",
+    "data": { ... }
+  }
+  ```
 
 ---
 
@@ -226,13 +225,13 @@ Authorization: Bearer <auth_token>
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "Subscriptions retrieved successfully.",
-  "data": [ ... ]
-}
-```
+    ```json
+    {
+      "status": "success",
+      "message": "Subscriptions retrieved successfully.",
+      "data": [ ... ]
+    }
+    ```
 
 ---
 
@@ -248,45 +247,45 @@ Authorization: Bearer <auth_token>
 
 #### Request Body:
 
-```json
-{
-  "plan_id": 3
-}
-```
+  ```json
+  {
+    "plan_id": 3
+  }
+  ```
 
 #### Responses:
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "Subscription created successfully.",
-  "data": { ... }
-}
-```
+  ```json
+  {
+    "status": "success",
+    "message": "Subscription created successfully.",
+    "data": { ... }
+  }
+  ```
 
 * ❌ **400 Bad Request** (already subscribed)
 
-```json
-{
-  "status": "error",
-  "message": "You are already subscribed to this plan and it is still active.",
-  "data": { ... }
-}
-```
+  ```json
+  {
+    "status": "error",
+    "message": "You are already subscribed to this plan and it is still active.",
+    "data": { ... }
+  }
+  ```
 
 * ❌ **400 Bad Request** (invalid plan)
 
-```json
-{
-  "status": "error",
-  "message": "Invalid data provided.",
-  "errors": {
-    "non_field_errors": ["Plan with this ID does not exist."]
+  ```json
+  {
+    "status": "error",
+    "message": "Invalid data provided.",
+    "errors": {
+      "non_field_errors": ["Plan with this ID does not exist."]
+    }
   }
-}
-```
+  ```
 
 ---
 
@@ -302,32 +301,32 @@ Authorization: Bearer <auth_token>
 
 #### Request Body:
 
-```json
-{
-  "subscription_id": 3
-}
-```
+  ```json
+  {
+    "subscription_id": 3
+  }
+  ```
 
 #### Responses:
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "Subscription cancelled successfully.",
-  "data": { ... }
-}
-```
+  ```json
+  {
+    "status": "success",
+    "message": "Subscription cancelled successfully.",
+    "data": { ... }
+  }
+  ```
 
 * ❌ **404 Not Found**
 
-```json
-{
-  "status": "error",
-  "message": "Subscription not found!"
-}
-```
+  ```json
+  {
+    "status": "error",
+    "message": "Subscription not found!"
+  }
+  ```
 
 ---
 
@@ -347,18 +346,18 @@ Authorization: Bearer <auth_token>
 
 * ✅ **200 OK**
 
-```json
-{
-  "status": "success",
-  "message": "Exchange rate retrieved successfully.",
-  "data": {
-    "base_currency": "EUR",
-    "target_currency": "USD",
-    "rate": 1.1511,
-    "timestamp": "2025-08-03T15:33:51.129413+00:00"
+  ```json
+  {
+    "status": "success",
+    "message": "Exchange rate retrieved successfully.",
+    "data": {
+      "base_currency": "EUR",
+      "target_currency": "USD",
+      "rate": 1.1511,
+      "timestamp": "2025-08-03T15:33:51.129413+00:00"
+    }
   }
-}
-```
+  ```
 
 ---
 
@@ -368,8 +367,8 @@ Authorization: Bearer <auth_token>
 
 #### Response:
 
-```json
-{
-  "status": "ok"
-}
-```
+  ```json
+  {
+    "status": "ok"
+  }
+  ```
